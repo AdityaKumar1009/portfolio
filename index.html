@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aditya here</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap");
+
+    :root {
+      --bg-color: #1A1A1D;
+      --text-color: #f3f2ec;
+      --accent-color: #e0e0e0;
+      --shadow-color: #f3f2ec;
+    }
+
+    .light-mode {
+      --bg-color: #f3f2ec;
+      --text-color: #1c1c1c;
+      --accent-color: #333;
+      --shadow-color: #1c1c1c;
+    }
+
+    body {
+      font-family: "Roboto Mono", monospace;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      transition: background-color 0.7s ease, color 0.7s ease;
+    }
+
+    .container {
+      width: 60%;
+      max-width: 900px;
+      padding: 2rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    h1 {
+      font-family: "Courier new";
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 1rem;
+      text-align: left;
+      color: var(--text-color);
+    }
+
+    p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+      font: monospace;
+      text-align: left;
+      color: var(--text-color);
+    }
+
+
+
+    .social-icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 2rem;
+    }
+
+    .icon2 {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      transition: 0.3s ease-in-out;
+      padding-right: 10px;
+      padding-bottom: 8px;
+    }
+
+    .icon2:hover {
+      box-shadow: var(--shadow-color) 0px 5px;
+    }
+
+    .separator {
+      width: 100%;
+      height: 1px;
+      background-color: #555;
+      margin: 2rem 0;
+    }
+
+    .no-style-link {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+
+    .no-style-link:hover {
+      box-shadow: var(--shadow-color) 0px 5px;
+    }
+
+    .circles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .circles li {
+      position: absolute;
+      display: block;
+      list-style: none;
+      width: 20px;
+      height: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      animation: animate 25s linear infinite;
+      bottom: -150px;
+      transition: background-color 0.7s ease, opacity 0.7s ease;
+    }
+
+    .circles li:nth-child(1) {
+      left: 25%;
+      width: 80px;
+      height: 80px;
+      animation-delay: 0s;
+    }
+
+    .circles li:nth-child(2) {
+      left: 10%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 2s;
+      animation-duration: 12s;
+    }
+
+    .circles li:nth-child(3) {
+      left: 70%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 4s;
+    }
+
+    .circles li:nth-child(4) {
+      left: 40%;
+      width: 60px;
+      height: 60px;
+      animation-delay: 0s;
+      animation-duration: 18s;
+    }
+
+    .circles li:nth-child(5) {
+      left: 65%;
+      width: 20px;
+      height: 20px;
+      animation-delay: 0s;
+    }
+
+    .circles li:nth-child(6) {
+      left: 75%;
+      width: 110px;
+      height: 110px;
+      animation-delay: 3s;
+    }
+
+    .circles li:nth-child(7) {
+      left: 35%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 7s;
+    }
+
+    .circles li:nth-child(8) {
+      left: 50%;
+      width: 25px;
+      height: 25px;
+      animation-delay: 15s;
+      animation-duration: 45s;
+    }
+
+    .circles li:nth-child(9) {
+      left: 20%;
+      width: 15px;
+      height: 15px;
+      animation-delay: 2s;
+      animation-duration: 35s;
+    }
+
+    .circles li:nth-child(10) {
+      left: 85%;
+      width: 150px;
+      height: 150px;
+      animation-delay: 0s;
+      animation-duration: 11s;
+    }
+
+    body.light-mode .circles li {
+      background: rgba(0, 0, 0, 0.1);
+      opacity: 0.6;
+    }
+
+    @keyframes animate {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+        border-radius: 0;
+      }
+      100% {
+        transform: translateY(-120vh) rotate(720deg);
+        opacity: 0;
+        border-radius: 50%;
+      }
+    }
+
+    #theme-toggle-icon {
+      transition: opacity 0.3s ease;
+    }
+
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 1rem 2rem;
+      border-radius: 4px;
+      color: white;
+      font-weight: bold;
+      z-index: 1000;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: all 0.3s ease;
+    }
+
+    .notification.success {
+      background: #28a745;
+    }
+
+    .notification.error {
+      background: #dc3545;
+    }
+
+    .notification.show {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        width: 90%;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </div>
+  
+  <div class="container">
+    <p>Hello, I am Aditya and I am currently into </p>
+    <h1>Seq2Seq Models and AI Research.</h1>
+    <p>
+      I am an Intern at <a href="https://ai.joshtalks.com" target="_blank" class="no-style-link">
+      <span style="color:#2386C9;"><b>Josh</b><span><span style="color:#F5792B;"><b>Talks</b></span></a>, 
+        where I am working on building Datasets for ASR Research. My work focuses on pushing the boundaries of Speech Recognition systems by fine-tuning models like OpenAI's Whisper, Meta's Wav2Vec2, Nvidia's Canary and other seq2seq models to handle the complexities of Indian languages and real-world noisy audio.
+    </p>
+
+    <p>
+      I've built a strong foundation but still I'm always learning.
+      Based in
+      <span style="color:#ff671f;"><b>In</b></span
+      ><span style="color:#2386C9;"><b>d</b></span
+      ><span style="color:#138808;"><b>ia</b></span>
+      I'm working with a great team, togeather on a mission of reducing WER < 5%
+    </p>
+    
+    <p>
+      Have a look on
+      <a href="./assets/resume-example.pdf" target="_blank" class="no-style-link"><b>my resume</b><b></b><span style="color:red">.</span></a>
+    </p>
+
+    <div class="separator"></div>
+
+    <div class="social-icons">
+      <img
+        src="./assets/sun.png"
+        id="theme-toggle-icon"
+        class="icon2"
+        onclick="toggleTheme()"
+        title="Toggle Dark/Light Mode"
+      />
+
+      <img
+        src="./assets/linkedin2.png"
+        alt="LinkedIn"
+        class="icon2"
+        id="linkedin-icon"
+        onclick="window.open('https://www.linkedin.com/in/adityaintoai/', '_blank')"
+      />
+
+      <img
+        src="./assets/github2.png"
+        alt="GitHub"
+        class="icon2"
+        id="github-icon"
+        onclick="window.open('https://github.com/AdityaKumar1009', '_blank')"
+      />
+
+      <img
+        src="./assets/twitter2.png"
+        alt="Twitter"
+        class="icon2"
+        id="twitter-icon"
+        onclick="window.open('https://x.com/crazeformarvel', '_blank')"
+      />
+
+      <img
+        src="./assets/instagram2.png"
+        alt="Instagram"
+        class="icon2"
+        id="instagram-icon"
+        onclick="window.open('https://www.instagram.com/adityaintoai/', '_blank')"
+      />
+
+      <img
+        src="./assets/mail2.png"
+        alt="Email"
+        class="icon2"
+        id="mail-icon"
+        onclick="location.href='mailto:adityaintoai@gmail.com'"
+      />
+    </div>
+  </div>
+
+  <!-- Notification element -->
+  <div id="notification" class="notification"></div>
+
+  <script>
+    // Open resume in new tab
+    function openResume() {
+      window.open('./assets/resume-example.pdf', '_blank');
+      showNotification('Resume opened in new tab!', 'success');
+    }
+
+    // Download resume - direct file access (keeping for potential future use)
+    function downloadResume() {
+      // Create a temporary link element
+      const link = document.createElement('a');
+      link.href = './assets/resume-example.pdf';
+      link.download = 'Aditya_Resume.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      showNotification('Resume downloaded!', 'success');
+    }
+
+    // Show notification
+    function showNotification(message, type) {
+      const notification = document.getElementById('notification');
+      notification.textContent = message;
+      notification.className = `notification ${type}`;
+      notification.classList.add('show');
+      
+      setTimeout(() => {
+        notification.classList.remove('show');
+      }, 3000);
+    }
+
+    // Theme toggle function
+    function toggleTheme() {
+      document.body.classList.toggle("light-mode");
+      const isLight = document.body.classList.contains("light-mode");
+
+      const themeIcon = document.getElementById("theme-toggle-icon");
+      themeIcon.style.opacity = 0;
+
+      setTimeout(() => {
+        themeIcon.src = isLight ? "./assets/moon.png" : "./assets/sun.png";
+        themeIcon.style.opacity = 1;
+      }, 300);
+
+      const dynamicLetter = document.getElementById("dynamic-letter");
+      if (dynamicLetter) {
+        dynamicLetter.style.color = isLight ? "#2386C9" : "#2386C9";
+      }
+
+      const dynamicLetter2 = document.getElementById("dynamic-letter2");
+      if (dynamicLetter2) {
+        dynamicLetter2.style.color = isLight ? "#2386C9" : "#2386C9";
+      }
+
+      document.getElementById("linkedin-icon").src = isLight ? "./assets/linkedin1.png" : "./assets/linkedin2.png";
+      document.getElementById("github-icon").src = isLight ? "./assets/github1.png" : "./assets/github2.png";
+      document.getElementById("twitter-icon").src = isLight ? "./assets/twitter1.png" : "./assets/twitter2.png";
+      document.getElementById("instagram-icon").src = isLight ? "./assets/instagram1.png" : "./assets/instagram2.png";
+      document.getElementById("mail-icon").src = isLight ? "./assets/mail1.png" : "./assets/mail2.png";
+    }
+
+    // Initialize page
+    document.addEventListener('DOMContentLoaded', function() {
+      // Page initialization code can be added here if needed
+    });
+
+    // Page loaded - no tracking needed for static version
+    window.addEventListener('load', function() {
+      console.log('Portfolio loaded successfully!');
+    });
+  </script>
+</body>
+</html>
